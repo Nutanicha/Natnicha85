@@ -1,1 +1,324 @@
 <p>Natnicha</p>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nattanitcha's Portfolio | Digital Business Innovation</title>
+    <!-- Google Fonts: Kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #7BB0A6;   /* เขียวมิ้นต์พาสเทล มินิมอลเทค */
+            --secondary-color: #FFB7B2; /* ชมพูพาสเทล น่ารัก */
+            --accent-color: #A3D8F4;    /* ฟ้าพาสเทล */
+            --text-color: #4A4A4A;
+            --bg-color: #FAFBFD;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, #B5EAD7, #FFDAC1);
+            color: #333;
+            text-align: center;
+            padding: 70px 20px 50px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .profile-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #FFFFFF;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #2D4059;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 1.05rem;
+            color: #555;
+            font-weight: 400;
+        }
+
+        /* Container */
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0 20px 50px;
+        }
+
+        /* Card Style */
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            margin-bottom: 25px;
+            border: 1px solid #F0F4F8;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-title {
+            color: #2D4059;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Timeline / Experience Style */
+        .timeline-item {
+            border-left: 3px solid #E2F0CB;
+            padding-left: 20px;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '💻';
+            position: absolute;
+            left: -16px;
+            top: 0;
+            background: white;
+            border-radius: 50%;
+            font-size: 0.9rem;
+        }
+
+        .exp-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2D4059;
+        }
+
+        .exp-time {
+            display: inline-block;
+            background-color: #E2F0CB;
+            color: #4B6584;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 5px 0 10px;
+        }
+
+        .exp-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .exp-img-container {
+            margin-top: 15px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 100%;
+        }
+
+        .exp-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Skill & Hobby Tags */
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background-color: #F0F7F7;
+            color: #3B7A57;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .tag.hobby {
+            background-color: #FFF0F5;
+            color: #D87093;
+        }
+
+        .tag.highlight {
+            background-color: #FFE4E1;
+            color: #C71585;
+            border: 1px dashed #FFB6C1;
+        }
+
+        /* Video Showcase Box */
+        .video-box {
+            background: #F9FAFC;
+            border: 2px dashed #D0E1D4;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        /* Contact */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #AAA;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="profile-container">
+            <!-- รูปโปรไฟล์ของคุณ (เปลี่ยน URL ลิงก์ตรงนี้เมื่อเปิดสิทธิ์รูปภาพเรียบร้อยแล้ว) -->
+            <img src="https://i.pinimg.com/736x/40/9c/9f/409c9f5c1c17cd092a4af7a75549d680.jpg" alt="นางสาวณัฐนิชชา รัตนศรี" class="profile-img">
+            <div class="badge">✨</div>
+        </div>
+        <h1>นางสาวณัฐนิชชา รัตนศรี</h1>
+        <p>คณะเทคโนโลยี สาขานวัตกรรมธุรกิจดิจิทัล</p>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- เกี่ยวกับฉัน -->
+        <section class="card">
+            <div class="card-title">🌸 เกี่ยวกับฉัน (About Me)</div>
+            <p>
+                สวัสดีค่ะ! ฉันชื่อ <strong>ณัฐนิชชา รัตนศรี</strong> ปัจจุบันกำลังศึกษาอยู่ในคณะเทคโนโลยี สาขานวัตกรรมธุรกิจดิจิทัล 
+                มีความสนใจในการเรียนรู้เทคโนโลยีใหม่ๆ นวัตกรรมดิจิทัล และพร้อมพัฒนาทักษะตนเองอยู่เสมอค่ะ
+            </p>
+        </section>
+
+        <!-- ประสบการณ์การทำงาน -->
+        <section class="card">
+            <div class="card-title">💼 ประสบการณ์การทำงาน (Work Experience)</div>
+            <div class="timeline-item">
+                <div class="exp-title">นักศึกษาฝึกงาน — Lotus's Go Fresh</div>
+                <div class="exp-time">ระยะเวลาฝึกงาน 6 เดือน</div>
+                <div class="exp-desc">
+                    • เรียนรู้กระบวนการทำงานจริงในระบบธุรกิจค้าปลีก<br>
+                    • พัฒนาทักษะการทำงานร่วมกับผู้อื่น การสื่อสาร และการแก้ปัญหาเฉพาะหน้า<br>
+                    • ฝึกฝนความรับผิดชอบ และการปรับตัวในการทำงานร่วมกับทีมอย่างมีประสิทธิภาพ
+                </div>
+                
+                <!-- รูปภาพบรรยากาศการฝึกงาน -->
+                <div class="exp-img-container">
+                    <img src="https://drive.google.com/thumbnail?id=1v6qYQpEuHqoUSVnDQ0K36XGKc4vaEr3b&sz=w1000" alt="ประสบการณ์ฝึกงาน Lotus's Go Fresh" class="exp-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- ความสามารถ & งานอดิเรก -->
+        <section class="card">
+            <div class="card-title">🎨 ความสามารถ & งานอดิเรก (Skills & Hobbies)</div>
+            
+            <p><strong>ความสามารถ / ความสนใจ:</strong></p>
+            <div class="tag-group">
+                <span class="tag">Digital Business Innovation</span>
+                <span class="tag">ตัดต่อวิดีโอ (พอได้ / กำลังพัฒนา)</span>
+            </div>
+
+            <p style="margin-top: 18px;"><strong>งานอดิเรก:</strong></p>
+            <div class="tag-group">
+                <span class="tag hobby highlight">ดูซีรีย์วาย 🎬💖</span>
+                <span class="tag hobby">ดูซีรีย์ทั่วไป</span>
+                <span class="tag hobby">ฟังเพลง</span>
+            </div>
+        </section>
+
+        <!-- ผลงานการตัดต่อ -->
+        <section class="card">
+            <div class="card-title">🎬 ผลงานการตัดต่อ (Video Portfolio)</div>
+            <p style="font-size: 0.95rem; color: #666;">ตัวอย่างคลิปวิดีโอผลงานที่เคยตัดต่อ:</p>
+            <div class="video-box">
+                📌 พื้นที่สำหรับแปะลิงก์ หรือ ฝังคลิปวิดีโอ (YouTube / TikTok / Google Drive)
+            </div>
+        </section>
+
+        <!-- ติดต่อ -->
+        <section class="card">
+            <div class="card-title">📬 ติดต่อฉัน (Contact)</div>
+            <div class="contact-item">
+                <span>📧</span> <span><strong>Email:</strong> nattanitcha.r@example.com</span>
+            </div>
+            <div class="contact-item">
+                <span>📱</span> <span><strong>Phone:</strong> 0xx-xxx-xxxx</span>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        © 2026 Nattanitcha Rattanasri | Minimal Tech Portfolio
+    </footer>
+
+</body>
+</html>
