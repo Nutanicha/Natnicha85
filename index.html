@@ -11,23 +11,21 @@
     
     <style>
         :root {
-            --bg-color: #FAF8F5;
-            --card-bg: #FFFFFF;
-            --primary-pink: #FFB7B2;
-            --soft-purple: #E2F0CB;
-            --tech-blue: #B5EAD7;
-            --accent-color: #FFDAC1;
-            --text-main: #4A4A4A;
-            --text-muted: #7D7D7D;
-            --radius-large: 24px;
-            --radius-small: 16px;
-            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --bg-color: #f7f9fc;
+            --card-bg: #ffffff;
+            --primary: #9bb7d4;
+            --secondary: #e2eafc;
+            --accent: #f8c8dc;
+            --text-main: #4a5568;
+            --text-dark: #2d3748;
+            --shadow: 0 10px 25px rgba(155, 183, 212, 0.15);
+            --radius: 24px;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Kanit', sans-serif;
         }
 
@@ -43,100 +41,96 @@
             margin: 0 auto;
         }
 
-        /* Header / Profile Section */
+        /* Profile Card */
         .profile-card {
             background: var(--card-bg);
-            border-radius: var(--radius-large);
+            border-radius: var(--radius);
             padding: 40px 30px;
             text-align: center;
             box-shadow: var(--shadow);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             position: relative;
             overflow: hidden;
+            border: 2px solid #ffffff;
         }
 
         .profile-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background: linear-gradient(90deg, #FFB7B2, #FFDAC1, #E2F0CB, #B5EAD7, #C7CEEA);
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--secondary);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.6;
         }
 
-        .avatar-wrapper {
+        .profile-img-container {
             position: relative;
             width: 170px;
             height: 170px;
             margin: 0 auto 20px;
+            z-index: 1;
         }
 
-        .avatar-img {
+        .profile-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 6px solid #FFF;
+            border: 4px solid var(--card-bg);
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
-        .status-badge {
+        .tech-badge {
             position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background-color: #B5EAD7;
-            color: #2D6A4F;
-            font-size: 0.85rem;
-            padding: 4px 12px;
+            bottom: 5px;
+            right: 5px;
+            background: var(--accent);
+            color: #5a3e4d;
+            padding: 6px 12px;
             border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 500;
-            border: 2px solid #FFF;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .profile-title {
+        .profile-card h1 {
+            color: var(--text-dark);
             font-size: 1.8rem;
             font-weight: 600;
-            color: #333;
             margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
         }
 
-        .profile-subtitle {
-            color: #888;
-            font-size: 1rem;
+        .subtitle {
+            color: var(--primary);
+            font-weight: 500;
             margin-bottom: 15px;
+            display: inline-block;
+            background: var(--secondary);
+            padding: 4px 16px;
+            border-radius: 12px;
+            font-size: 0.95rem;
         }
 
-        .tag-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background-color: #F0F4F8;
-            color: #5A6B7C;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-
-        /* Content Grid */
+        /* Grid Layout */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .card {
             background: var(--card-bg);
-            border-radius: var(--radius-small);
+            border-radius: var(--radius);
             padding: 25px;
             box-shadow: var(--shadow);
-            transition: transform 0.2s ease;
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
@@ -150,9 +144,11 @@
             margin-bottom: 15px;
         }
 
-        .icon-box {
-            width: 42px;
-            height: 42px;
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            color: var(--primary);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -160,71 +156,69 @@
             font-size: 1.2rem;
         }
 
-        .icon-education { background-color: #FFE5EC; color: #FF4D6D; }
-        .icon-skills { background-color: #E8F5E9; color: #2E7D32; }
-        .icon-hobby { background-color: #FFF3E0; color: #E65100; }
-
-        .card-title {
+        .card h2 {
             font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .card-body {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            color: var(--text-dark);
         }
 
         /* Experience Section */
         .exp-card {
             background: var(--card-bg);
-            border-radius: var(--radius-small);
+            border-radius: var(--radius);
             padding: 30px;
             box-shadow: var(--shadow);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        .exp-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        .exp-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             margin-top: 15px;
         }
 
-        .exp-img-wrapper {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            max-height: 250px;
+        @media (min-width: 600px) {
+            .exp-container {
+                flex-direction: row;
+                align-items: center;
+            }
         }
 
-        .exp-img-wrapper img {
+        .exp-img {
             width: 100%;
-            height: 100%;
+            max-width: 320px;
+            border-radius: 16px;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         }
 
-        .exp-img-wrapper:hover img {
-            transform: scale(1.05);
+        .exp-details {
+            flex: 1;
+        }
+
+        .exp-tag {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 20px;
-            color: var(--text-muted);
+            color: #a0aec0;
             font-size: 0.9rem;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .profile-card {
-                padding: 30px 20px;
-            }
-            .profile-title {
-                font-size: 1.5rem;
-            }
+        /* Soft Decorative Elements */
+        .sparkle {
+            color: #f6ad55;
+            margin: 0 4px;
         }
     </style>
 </head>
@@ -232,103 +226,71 @@
 
     <div class="container">
         
-        <!-- Profile Card -->
-        <header class="profile-card">
-            <div class="avatar-wrapper">
+        <!-- Profile Header -->
+        <div class="profile-card">
+            <div class="profile-img-container">
                 <!-- รูปโปรไฟล์ของคุณ -->
-                <img src="https://lh3.googleusercontent.com/d/1hesWKlAedRldi-ZXCpP1XVTg1sHPoZj_" alt="ณัฐนิชชา รัตนศรี" class="avatar-img">
-                <span class="status-badge"><i class="fa-solid fa-sparkles"></i> Student</span>
+                <img src="https://lh3.googleusercontent.com/d/1pYLO8vGCiVMhJRa2rIdGIRjTkgGoP_QI" alt="นางสาวณัฐนิชชา รัตนศรี" class="profile-img">
+                <span class="tech-badge"><i class="fa-solid fa-laptop-code"></i> Tech Student</span>
             </div>
-            <h1 class="profile-title">นางสาวณัฐนิชชา รัตนศรี</h1>
-            <p class="profile-subtitle">คณะเทคโนโลยี สาขานวัตกรรมธุรกิจดิจิทัล</p>
-            
-            <div class="tag-group">
-                <span class="tag"><i class="fa-solid fa-laptop-code"></i> Digital Business</span>
-                <span class="tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Minimal Tech</span>
-                <span class="tag"><i class="fa-solid fa-heart"></i> Creative</span>
-            </div>
-        </header>
+            <h1>นางสาวณัฐนิชชา รัตนศรี</h1>
+            <div class="subtitle"><i class="fa-solid fa-graduation-cap"></i> คณะเทคโนโลยี สาขานวัตกรรมธุรกิจดิจิทัล</div>
+            <p>ยินดีต้อนรับสู่พื้นที่ส่วนตัวของฉันค่ะ ✨ สนใจงานด้านเทคโนโลยีและธุรกิจดิจิทัล</p>
+        </div>
 
-        <!-- Information Grid -->
+        <!-- Details Grid -->
         <div class="grid">
-            
-            <!-- Education Card -->
+            <!-- Skill Card -->
             <div class="card">
                 <div class="card-header">
-                    <div class="icon-box icon-education">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h2 class="card-title">การศึกษา</h2>
+                    <div class="card-icon"><i class="fa-solid fa-video"></i></div>
+                    <h2>ความสามารถ & ทักษะ</h2>
                 </div>
-                <div class="card-body">
-                    <p><strong>คณะ:</strong> เทคโนโลยี</p>
-                    <p><strong>สาขา:</strong> นวัตกรรมธุรกิจดิจิทัล</p>
-                    <p style="margin-top: 8px; font-size: 0.9rem; color: #888;">มุ่งมั่นเรียนรู้เทคโนโลยี นวัตกรรม และการประยุกต์ใช้ในโลกธุรกิจดิจิทัล</p>
-                </div>
-            </div>
-
-            <!-- Skills Card -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="icon-box icon-skills">
-                        <i class="fa-solid fa-video"></i>
-                    </div>
-                    <h2 class="card-title">ความสามารถพิเศษ</h2>
-                </div>
-                <div class="card-body">
-                    <p><strong>การตัดต่อวิดีโอ (Video Editing)</strong></p>
-                    <p style="margin-top: 5px;">มีความสนใจในการตัดต่อวิดีโอ สามารถตัดต่อคลิปสั้น นำเสนอเนื้อหา หรือทำคลิปสร้างสรรค์ได้ในระดับเบื้องต้นถึงปานกลาง ✨</p>
-                </div>
+                <p><strong>การตัดต่อวิดีโอ (Video Editing):</strong> <span class="sparkle">✨</span></p>
+                <p style="font-size: 0.95rem; color: #718096; margin-top: 5px;">
+                    อยู่ในระดับกำลังเรียนรู้และพัฒนา (พอตัดต่อได้) มีความสนใจและชอบสร้างสรรค์ผลงานวิดีโอ
+                </p>
             </div>
 
             <!-- Hobby Card -->
             <div class="card">
                 <div class="card-header">
-                    <div class="icon-box icon-hobby">
-                        <i class="fa-solid fa-tv"></i>
-                    </div>
-                    <h2 class="card-title">งานอดิเรก</h2>
+                    <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
+                    <h2>งานอดิเรก & ความชอบ</h2>
                 </div>
-                <div class="card-body">
-                    <p><strong>ชอบดูซีรีส์วาย (Y-Series) 🎬</strong></p>
-                    <p style="margin-top: 5px;">ผ่อนคลายเวลาว่างด้วยการรับชมซีรีส์ และชอบติดตามเรื่องราวความสวยงามของงานโปรดักชัน ซีนสวยๆ ในซีรีส์</p>
-                </div>
+                <p><strong>ดูซีรีย์วาย (Y-Series Enthusiast) 🎬</strong></p>
+                <p style="font-size: 0.95rem; color: #718096; margin-top: 5px;">
+                    ชอบผ่อนคลายในเวลาว่างด้วยการดูซีรีย์ เพลิดเพลินไปกับเรื่องราวและความสนุกสนาน
+                </p>
             </div>
-
         </div>
 
         <!-- Experience Section -->
-        <section class="exp-card">
+        <div class="exp-card">
             <div class="card-header">
-                <div class="icon-box" style="background-color: #E1F5FE; color: #0288D1;">
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
-                <h2 class="card-title">ประสบการณ์การทำงาน / ฝึกงาน</h2>
+                <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h2>ประสบการณ์การทำงาน / ฝึกงาน</h2>
             </div>
-            
-            <div style="margin-bottom: 15px;">
-                <h3 style="font-size: 1.1rem; color: #333;">ฝึกงานที่ Lotus's Go Fresh</h3>
-                <p style="color: #666; font-size: 0.95rem;">ระยะเวลาฝึกงาน: <strong>6 เดือน</strong></p>
-                <p style="color: #777; font-size: 0.9rem; margin-top: 5px;">
-                    ได้เรียนรู้ระบบการทำงานจริง การบริหารจัดการหน้าร้าน การบริการลูกค้า และการทำงานร่วมกับผู้อื่นอย่างเป็นระบบ
-                </p>
-            </div>
-
-            <!-- Experience Images -->
-            <div class="exp-gallery">
-                <div class="exp-img-wrapper">
-                    <!-- รูปประสบการณ์ฝึกงานของคุณ -->
-                    <img src="https://lh3.googleusercontent.com/d/1bOxuDZZbUgwj7lU9-8kiE0qZ1u3jkQK0" alt="ประสบการณ์ฝึกงาน Lotus's Go Fresh">
+            <div class="exp-container">
+                <!-- รูปภาพประสบการณ์ฝึกงานของคุณ -->
+                <img src="https://lh3.googleusercontent.com/d/1bOxuDZZbUgwj7lU9-8kiE0qZ1u3jkQK0" alt="ประสบการณ์ฝึกงาน Lotus's Go Fresh" class="exp-img">
+                <div class="exp-details">
+                    <span class="exp-tag"><i class="fa-regular fa-clock"></i> ระยะเวลา 6 เดือน</span>
+                    <h3 style="color: var(--text-dark); margin-bottom: 8px;">Lotus's Go Fresh</h3>
+                    <p style="color: #718096; font-size: 0.95rem;">
+                        ได้รับประสบการณ์การทำงานจริง เรียนรู้ระบบงานบริการ การจัดการ และการทำงานร่วมกับผู้อื่นอย่างเป็นระบบ เสริมสร้างทักษะทางสังคมและความรับผิดชอบ
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- Footer -->
         <footer>
-            <p>© 2026 Natnicha Rattanasri — Portfolio ✨</p>
+            <p>© 2026 Natnicha Rattanasri. Designed with Cute Minimal Tech Style 💕</p>
         </footer>
 
     </div>
 
 </body>
 </html>
+
