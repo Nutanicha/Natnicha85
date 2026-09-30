@@ -1,153 +1,667 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEETLE STATION | Raised & Crafted with Care</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEETLE STATION - Natural & Strong Beetle Accessories</title>
+  
+  <!-- Google Fonts: Prompt & Kanit (Sans Serif ทันสมัย อ่านง่าย) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Global Variables & Colors */
+    :root {
+      --bg-dark: #121212;
+      --bg-card-dark: #1e1e1e;
+      --red-primary: #d32f2f;
+      --red-accent: #ff3b30;
+      --wood-brown: #795548;
+      --wood-dark: #4e342e;
+      --wood-light: #a1887f;
+      --cream-bg: #fcfbfa;
+      --cream-card: #f5f2eb;
+      --text-dark: #212121;
+      --text-muted: #666666;
+      --text-light: #f5f5f5;
+      --border-radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Typography Overrides */
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Kanit', sans-serif;
+      font-weight: 700;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 2px solid var(--red-primary);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid var(--red-primary);
+      object-fit: cover;
+    }
+
+    .brand-name {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-light);
+      letter-spacing: 1px;
+    }
+
+    .brand-name span {
+      color: var(--red-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--red-accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      padding: 140px 5% 60px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      background: radial-gradient(circle at 80% 20%, rgba(211, 47, 47, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(121, 85, 72, 0.2) 0%, transparent 50%);
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(211, 47, 47, 0.2);
+      border: 1px solid var(--red-primary);
+      color: var(--red-accent);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .hero-title .highlight {
+      color: var(--red-accent);
+      background: linear-gradient(45deg, var(--red-accent), #ff7300);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #cccccc;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--red-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--red-accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #ffffff;
+      border: 2px solid var(--wood-brown);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--wood-brown);
+      color: #ffffff;
+    }
+
+    .hero-profile {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .profile-card {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      padding: 8px;
+      background: linear-gradient(135deg, var(--red-primary), var(--wood-brown));
+      box-shadow: 0 0 30px rgba(211, 47, 47, 0.3);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: var(--bg-card-dark);
+    }
+
+    /* Section Global Styles */
+    .section {
+      padding: 80px 5%;
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-subtitle {
+      color: var(--red-accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      margin-top: 8px;
+      color: #ffffff;
+    }
+
+    /* Brand Portfolio Analysis Section (Cream & Wood Theme Light BG) */
+    .portfolio-section {
+      background-color: var(--cream-bg);
+      color: var(--text-dark);
+      border-radius: var(--border-radius);
+      margin: 0 2.5%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .portfolio-section .section-title {
+      color: var(--text-dark);
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .analysis-card {
+      background: var(--cream-card);
+      padding: 30px;
+      border-radius: 12px;
+      border-left: 4px solid var(--wood-brown);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .analysis-card i {
+      font-size: 2rem;
+      color: var(--wood-dark);
+      margin-bottom: 15px;
+    }
+
+    .analysis-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--wood-dark);
+    }
+
+    .analysis-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Product Section */
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      background-color: var(--bg-card-dark);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      align-items: center;
+    }
+
+    .product-media {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+
+    .product-img-box {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid var(--wood-brown);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-img-box img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .product-img-box:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      flex: 1.2;
+      min-width: 300px;
+    }
+
+    .product-tag {
+      background-color: var(--wood-brown);
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .product-title {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .product-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--red-accent);
+      margin-bottom: 20px;
+    }
+
+    .specs-list {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .specs-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+      color: #dddddd;
+    }
+
+    .specs-list i {
+      color: var(--red-accent);
+      font-size: 1.1rem;
+    }
+
+    /* Video Gallery Section */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .video-card {
+      background-color: var(--bg-card-dark);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--red-primary);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-info {
+      padding: 18px;
+    }
+
+    .video-info h4 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .video-info p {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0a0a0a;
+      border-top: 1px solid #222;
+      padding: 40px 5% 20px 5%;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--bg-card-dark);
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background-color: var(--red-primary);
+      transform: scale(1.1);
+    }
+
+    .copyright {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: none; /* Can be expanded into hamburger menu */
+      }
+
+      .product-container {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
-    <header class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <img src="https://drive.google.com/thumbnail?id=1Y_H0vyF5MgZ_nvGsHJa-UMq2P_bmoR5R&sz=w500" alt="BEETLE STATION Logo" class="brand-logo">
-                <span class="brand-title">BEETLE STATION</span>
-            </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#about">เกี่ยวกับแบรนด์</a></li>
-                    <li><a href="#portfolio">วิเคราะห์พอร์ตโฟลิโอ</a></li>
-                    <li><a href="#product">สินค้า</a></li>
-                    <li><a href="#videos">วิดีโอไฮไลท์</a></li>
-                    <li><a href="#contact">ติดต่อเรา</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="#" class="brand-logo">
+      <img src="https://drive.google.com/thumbnail?id=1Y_H0vyF5MgZ_nvGsHJa-UMq2P_bmoR5R&sz=w500" alt="BEETLE STATION Profile" onError="this.src='https://via.placeholder.com/150/d32f2f/ffffff?text=BS'">
+      <div class="brand-name">BEETLE <span>STATION</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">เกี่ยวกับแบรนด์</a></li>
+      <li><a href="#portfolio">บทวิเคราะห์พอร์ตโฟลิโอ</a></li>
+      <li><a href="#product">สินค้าไฮไลท์</a></li>
+      <li><a href="#videos">วิดีโอคลิป</a></li>
+    </ul>
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <img src="https://drive.google.com/thumbnail?id=1Y_H0vyF5MgZ_nvGsHJa-UMq2P_bmoR5R&sz=w500" alt="BEETLE STATION Profile" class="hero-profile-img">
-            <h1 class="brand-header">BEETLE STATION</h1>
-            <p class="tagline">"Raised & Crafted with Care" — ใส่ใจทุกการเลี้ยง พิถีพิถันทุกการสร้างสรรค์</p>
-            <a href="#product" class="btn btn-primary">ชมสินค้าของเรา</a>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero" id="about">
+    <div class="hero-text">
+      <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> STRENGTH & NATURAL CRAFT</span>
+      <h1 class="hero-title">BEETLE <span class="highlight">STATION</span></h1>
+      <p class="hero-desc">
+        ศูนย์รวมอุปกรณ์และอุปกรณ์ตกแต่งพื้นที่เลี้ยงด้วงสไตล์ธรรมชาติ เน้นย้ำความแข็งแกร่ง โดดเด่น และความปลอดภัยสูงสุดไร้สารเคมีสำหรับด้วงตัวโปรดของคุณ
+      </p>
+      <div class="hero-buttons">
+        <a href="#product" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> ชมสินค้า</a>
+        <a href="#videos" class="btn btn-secondary"><i class="fa-solid fa-play"></i> วิดีโอสาธิต</a>
+      </div>
+    </div>
+    <div class="hero-profile">
+      <div class="profile-card">
+        <img class="profile-img" src="https://drive.google.com/thumbnail?id=1Y_H0vyF5MgZ_nvGsHJa-UMq2P_bmoR5R&sz=w1000" alt="BEETLE STATION Profile" onError="this.src='https://via.placeholder.com/300/121212/ffffff?text=BEETLE+STATION'">
+      </div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">เกี่ยวกับเรา (About Us)</h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3>วิvision & Mission</h3>
-                    <p>ศูนย์รวมผู้เพาะเลี้ยงด้วงและอุปกรณ์เลี้ยงด้วงจากไม้ธรรมชาติคุณภาพสูง เรามุ่งมั่นที่จะนำเสนอความรู้และอุปกรณ์ที่ตอบโจทย์ผู้รักการเลี้ยงด้วงอย่างจริงใจ</p>
-                </div>
-                <div class="about-card">
-                    <h3>คุณค่าของแบรนด์ (Core Values)</h3>
-                    <p>น่าเชื่อถือ | สร้างสรรค์ | จริงใจ | พิถีพิถัน | เป็นธรรมชาติและทันสมัย</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Brand Portfolio Analysis Section -->
+  <section class="section portfolio-section" id="portfolio">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">Brand Analysis & Vision</span>
+      <h2 class="section-title">วิเคราะห์ข้อมูลพอร์ตโฟลิโอแบรนด์</h2>
+    </div>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section">
-        <div class="container">
-            <h2 class="section-title">บทวิเคราะห์พอร์ตโฟลิโอแบรนด์ (Brand Portfolio Analysis)</h2>
-            <div class="portfolio-container">
-                <div class="portfolio-item">
-                    <h4>กลุ่มเป้าหมาย (Target Audience)</h4>
-                    <p>ผู้ชื่นชอบและหลงใหลในการเลี้ยงด้วง อายุ 15-45 ปี ที่ต้องการด้วงคุณภาพ อุปกรณ์ที่สวยงามได้มาตรฐาน และมองหาแหล่งข้อมูลที่น่าเชื่อถือ</p>
-                </div>
-                <div class="portfolio-item">
-                    <h4>ปัญหาที่เราแก้ไข (Problem Solved)</h4>
-                    <p>แก้ไขปัญหาการหาซื้อด้วงและอุปกรณ์จากหลายแหล่งที่ขาดข้อมูลและการแนะนำอย่างมืออาชีพ ด้วยการจัดหาโซลูชันแบบครบวงจร (All-in-One Solution)</p>
-                </div>
-                <div class="portfolio-item">
-                    <h4>จุดเด่นและความแตกต่าง (Unique Value Proposition)</h4>
-                    <p>การเพาะเลี้ยงด้วงด้วยตนเอง ควบคู่กับการผลิตอุปกรณ์ไม้ด้วยมือ (Crafted) พร้อมให้คำแนะนำจากประสบการณ์จริง ปลอดภัยและเหมาะกับพื้นที่เลี้ยงด้วงโดยเฉพาะ</p>
-                </div>
-                <div class="portfolio-item">
-                    <h4>กลยุทธ์ช่องทางสื่อสาร (Channel Strategy)</h4>
-                    <p>สร้างการรับรู้ผ่านสื่อสั้นใน TikTok, Facebook Reels และ YouTube Shorts นำเสนอขั้นตอนการเลี้ยง การผลิตอุปกรณ์ไม้ และรีวิวจากชุมชนผู้เลี้ยงด้วงจริง</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <i class="fa-solid fa-tree"></i>
+        <h3>แนวคิดด้านธรรมชาติ (Eco-Concept)</h3>
+        <p>ยึดมั่นในการใช้วัสดุธรรมชาติ 100% โดยไม่ผ่านการปรุงแต่ง เพื่อจำลองสภาพแวดล้อมที่ใกล้เคียงกับถิ่นที่อยู่จริงของด้วงมากที่สุด</p>
+      </div>
 
-    <!-- Product Section -->
-    <section id="product" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">สินค้าไฮไลท์ (Featured Product)</h2>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://drive.google.com/thumbnail?id=1VE9k9dk2uIxcf1ybPxlbr9vcBkb9_vy3&sz=w1000" alt="แท่นไม้เลี้ยงด้วง BEETLE STATION">
-                </div>
-                <div class="product-info">
-                    <h3>แท่นไม้ตกแต่งพื้นที่เลี้ยงด้วง (Wood Dock for Beetles)</h3>
-                    <p class="price">ราคา 120 บาท</p>
-                    <ul class="product-details">
-                        <li><strong>ขนาด:</strong> กว้าง 10 ซม. × ยาว 4 ซม.</li>
-                        <li><strong>วัสดุ:</strong> ผลิตจากไม้ธรรมชาติ 100%</li>
-                        <li><strong>ลวดลาย:</strong> แต่ละชิ้นมีลวดลายและรูปทรงเฉพาะตัวตามธรรมชาติ (Unique Natural Texture)</li>
-                        <li><strong>คุณสมบัติพิเศษ:</strong> ออกแบบสำหรับใช้ในพื้นที่เลี้ยงด้วงโดยเฉพาะ ไม่มีการเคลือบสีหรือสารเคลือบผิว ปลอดภัยต่อตัวด้วงแน่นอน</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-secondary">สั่งซื้อสินค้า</a>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="analysis-card">
+        <i class="fa-solid fa-shield-cat"></i>
+        <h3>ความปลอดภัยไร้สารเคมี</h3>
+        <p>ไม่ใช้การเคลือบสี สารเคมี หรือน้ำยาใดๆ บนพื้นผิวไม้ ป้องกันอันตรายจากการกัดแทะหรือสัมผัสสารพิษของด้วงทุกสายพันธุ์</p>
+      </div>
 
-    <!-- Videos Showcase Section -->
-    <section id="videos" class="section">
-        <div class="container">
-            <h2 class="section-title">วิดีโอสาธิตและกิจกรรม (Video Gallery)</h2>
-            <div class="video-grid">
-                <div class="video-item">
-                    <h3>คลิปที่ 1: การเพาะเลี้ยงและใช้อุปกรณ์</h3>
-                    <video controls width="100%">
-                        <source src="https://drive.google.com/uc?export=download&id=1j_io6_qqsKp6d9ZuDJTgy_N96EyBtDcU" type="video/mp4">
-                        เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
-                    </video>
-                </div>
-                <div class="video-item">
-                    <h3>คลิปที่ 2: งานเบื้องหลังและอุปกรณ์ไม้</h3>
-                    <video controls width="100%">
-                        <source src="https://drive.google.com/uc?export=download&id=1JgVMS4yFx8TIH0Nflc09stezPnoDr-qL" type="video/mp4">
-                        เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
-                    </video>
-                </div>
-                <div class="video-item">
-                    <h3>คลิปที่ 3: บรรยากาศและรีวิวสินค้า</h3>
-                    <video controls width="100%">
-                        <source src="https://drive.google.com/uc?export=download&id=12ZpRwpVciNuJcQrDWTR-2nO_pT6AhRNu" type="video/mp4">
-                        เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="analysis-card">
+        <i class="fa-solid fa-fingerprint"></i>
+        <h3>เอกลักษณ์ชิ้นเดียวในโลก</h3>
+        <p>สินค้าทุกชิ้นมีรูปทรง ลวดลายไม้ และเทกซ์เจอร์เฉพาะตัว มอบความโดดเด่นไม่ซ้ำใครให้กับการจัดตู้เลี้ยงด้วง</p>
+      </div>
 
-    <!-- Footer / Contact -->
-    <footer id="contact" class="footer">
-        <div class="container footer-content">
-            <h2 class="footer-title">BEETLE STATION</h2>
-            <p>สอบถามรายละเอียดเพิ่มเติมและสั่งซื้อสินค้าได้ที่ช่องทางโซเชียลมีเดียของเรา</p>
-            <div class="social-links">
-                <a href="#" target="_blank">Facebook</a>
-                <a href="#" target="_blank">TikTok</a>
-                <a href="#" target="_blank">YouTube</a>
-            </div>
-            <p class="copyright">&copy; 2026 BEETLE STATION. All Rights Reserved.</p>
+      <div class="analysis-card">
+        <i class="fa-solid fa-gem"></i>
+        <h3>อัตลักษณ์แบรนด์ที่แข็งแกร่ง</h3>
+        <p>ผสมผสานโทนสีดำ-แดง เพื่อสื่อถึงพลัง ความแข็งแกร่งของด้วง ควบคู่กับโทนสีน้ำตาลไม้และครีมที่สื่อถึงความเรียบง่ายและเป็นธรรมชาติ</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Highlight Section -->
+  <section class="section" id="product">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">Featured Product</span>
+      <h2 class="section-title">สินค้าไฮไลท์ประจำแบรนด์</h2>
+    </div>
+
+    <div class="product-container">
+      <div class="product-media">
+        <div class="product-img-box">
+          <img src="https://drive.google.com/thumbnail?id=1VE9k9dk2uIxcf1ybPxlbr9vcBkb9_vy3&sz=w1000" alt="ไม้ธรรมชาติสำหรับเลี้ยงด้วง BEETLE STATION" onError="this.src='https://via.placeholder.com/400x300/4e342e/ffffff?text=Natural+Wood+For+Beetles'">
         </div>
-    </footer>
+      </div>
+      <div class="product-info">
+        <span class="product-tag"><i class="fa-solid fa-leaf"></i> ไม้ธรรมชาติ 100%</span>
+        <h3 class="product-title">ขอนไม้ธรรมชาติสำหรับพื้นที่เลี้ยงด้วง</h3>
+        <div class="product-price">120 THB</div>
+        
+        <ul class="specs-list">
+          <li><i class="fa-solid fa-ruler-combined"></i> <strong>ขนาด:</strong> กว้าง 10 ซม. × ยาว 4 ซม.</li>
+          <li><i class="fa-solid fa-tree"></i> <strong>วัสดุ:</strong> ไม้ธรรมชาติบริสุทธิ์</li>
+          <li><i class="fa-solid fa-shapes"></i> <strong>เอกลักษณ์:</strong> แต่ละชิ้นมีลวดลายและรูปทรงเฉพาะตัวไม่ซ้ำกัน</li>
+          <li><i class="fa-solid fa-compass-drafting"></i> <strong>การออกแบบ:</strong> ออกแบบเฉพาะสำหรับจัดวางในพื้นที่เลี้ยงด้วง</li>
+          <li><i class="fa-solid fa-ban"></i> <strong>ความปลอดภัย:</strong> ไม่มีการเคลือบสี หรือสารเคมีสังเคราะห์ใดๆ</li>
+        </ul>
+
+        <a href="https://drive.google.com/file/d/1VE9k9dk2uIxcf1ybPxlbr9vcBkb9_vy3/view?usp=drivesdk" target="_blank" class="btn btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> ดูรูปภาพสินค้าขนาดเต็ม</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Clips Section -->
+  <section class="section" id="videos">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">Video Gallery</span>
+      <h2 class="section-title">วิดีโอสาธิตและคลิปบรรยากาศ</h2>
+    </div>
+
+    <div class="video-grid">
+      <!-- Video 1 -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://drive.google.com/file/d/1j_io6_qqsKp6d9ZuDJTgy_N96EyBtDcU/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h4><i class="fa-solid fa-circle-play" style="color:var(--red-accent);"></i> คลิปสาธิตสินค้า 1</h4>
+          <p>การใช้งานและบรรยากาศในพื้นที่เลี้ยงด้วงร่วมกับขอนไม้ธรรมชาติ</p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://drive.google.com/file/d/1JgVMS4yFx8TIH0Nflc09stezPnoDr-qL/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h4><i class="fa-solid fa-circle-play" style="color:var(--red-accent);"></i> คลิปสาธิตสินค้า 2</h4>
+          <p>การสำรวจลวดลายและเทกซ์เจอร์ความแข็งแกร่งของเนื้อไม้</p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://drive.google.com/file/d/12ZpRwpVciNuJcQrDWTR-2nO_pT6AhRNu/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h4><i class="fa-solid fa-circle-play" style="color:var(--red-accent);"></i> คลิปสาธิตสินค้า 3</h4>
+          <p>ภาพรวมการจัดตู้เลี้ยงและปฏิสัมพันธ์ของด้วงบนวัสดุธรรมชาติ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="brand-name">BEETLE <span>STATION</span></div>
+      <p style="color:#aaa; max-width: 500px; font-size: 0.9rem;">
+        นำเสนอความโดดเด่นและเป็นธรรมชาติในทุกชิ้นงาน สำหรับคนรักด้วงตัวจริง
+      </p>
+      <div class="social-links">
+        <a href="https://github.com" class="social-icon" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; BEETLE STATION - Personal Brand & Portfolio Website | Hosted on GitHub Pages
+    </div>
+  </footer>
 
 </body>
 </html>
