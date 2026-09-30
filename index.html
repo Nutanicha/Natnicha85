@@ -4,386 +4,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEETLE STATION | Raised & Crafted with Care</title>
-    <!-- Google Fonts: Inter & Prompt (Sans-Serif) -->
+    <title>BEETLE STATION - Raised & Crafted with Care</title>
+    <!-- Google Fonts: Prompt (Sans-Serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Prompt:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-dark: #121212;
-            --bg-card: #1c1a19;
-            --red-accent: #e63946;
-            --red-hover: #c1121f;
-            --wood-brown: #8b5a2b;
-            --wood-light: #a67c52;
-            --cream: #f4f1de;
-            --white: #ffffff;
-            --gray-text: #a0a0a0;
-            --border-color: #2a2827;
+            --bg-card: #1E1E1E;
+            --accent-red: #D32F2F;
+            --accent-wood: #8D5B4C;
+            --text-cream: #FDFBF7;
+            --text-light: #E0E0E0;
+            --text-muted: #A0A0A0;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Prompt', 'Inter', sans-serif;
+            font-family: 'Prompt', sans-serif;
         }
 
         body {
             background-color: var(--bg-dark);
-            color: var(--cream);
+            color: var(--text-cream);
             line-height: 1.6;
         }
 
-        /* Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
+        /* Header & Navigation */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 5%;
+            background-color: rgba(18, 18, 18, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-red);
         }
 
-        .logo-text {
-            font-family: 'Inter', sans-serif;
+        .brand-name {
             font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--white);
-        }
-
-        .logo-text span {
-            color: var(--red-accent);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            color: var(--cream);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--red-accent);
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 80px 0 60px;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--wood-brown);
-            box-shadow: 0 0 25px rgba(230, 57, 70, 0.3);
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-            border-color: var(--red-accent);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
             font-weight: 800;
-            color: var(--white);
-            margin-bottom: 10px;
+            color: var(--text-cream);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .hero h1 span {
-            color: var(--red-accent);
+        .brand-name span {
+            color: var(--accent-red);
         }
 
-        .tagline {
-            font-size: 1.2rem;
-            color: var(--wood-light);
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .hero-desc {
-            max-width: 650px;
-            color: var(--gray-text);
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 12px 28px;
-            border-radius: 6px;
+        nav a {
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            margin-left: 1.5rem;
+            font-weight: 400;
+            transition: color 0.3s;
         }
 
-        .btn-primary {
-            background-color: var(--red-accent);
-            color: var(--white);
+        nav a:hover {
+            color: var(--accent-red);
         }
 
-        .btn-primary:hover {
-            background-color: var(--red-hover);
-        }
-
-        .btn-secondary {
-            border: 2px solid var(--wood-brown);
-            color: var(--cream);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--wood-brown);
-            color: var(--white);
-        }
-
-        /* Section Titles */
-        .section-title {
+        /* Hero / Profile Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            font-size: 2rem;
+            background: linear-gradient(180deg, rgba(211,47,47,0.1) 0%, rgba(18,18,18,1) 100%);
+        }
+
+        .profile-img-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-red);
+            box-shadow: 0 0 20px rgba(211, 47, 47, 0.4);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
             font-weight: 800;
-            color: var(--white);
-            margin: 60px 0 40px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p.tagline {
+            font-size: 1.2rem;
+            color: var(--accent-wood);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero p.bio {
+            max-width: 650px;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        /* Portfolio / Brand Story Section */
+        .section {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
             position: relative;
         }
 
         .section-title::after {
             content: '';
-            display: block;
             width: 60px;
             height: 4px;
-            background: var(--red-accent);
-            margin: 10px auto 0;
+            background-color: var(--accent-red);
+            display: block;
+            margin: 0.5rem auto 0;
             border-radius: 2px;
         }
 
-        /* Grid Layouts */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .grid-3 {
+        .canvas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 1.5rem;
         }
 
-        /* Cards */
         .card {
             background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--wood-brown);
+            border-left: 4px solid var(--accent-wood);
+            padding: 1.5rem;
+            border-radius: 8px;
         }
 
         .card h3 {
-            color: var(--white);
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
-        .card p {
-            color: var(--gray-text);
+        /* Products Section */
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+
+        @media(min-width: 768px) {
+            .product-card {
+                flex-direction: row;
+            }
+        }
+
+        .product-img {
+            flex: 1;
+            background-color: #000;
+            min-height: 280px;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-details {
+            flex: 1.2;
+            padding: 2rem;
+        }
+
+        .product-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: var(--accent-red);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .product-specs {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
             font-size: 0.95rem;
         }
 
-        .badge {
-            display: inline-block;
-            background-color: rgba(230, 57, 70, 0.15);
-            color: var(--red-accent);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .product-specs li {
+            margin-bottom: 0.4rem;
         }
 
-        /* Values List */
-        .values-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 20px;
+        /* Video Showcase */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        .value-tag {
-            background: var(--bg-card);
-            border: 1px solid var(--wood-brown);
-            color: var(--cream);
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-weight: 600;
+        .video-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 6px;
+            background-color: #000;
         }
 
         /* Footer */
         footer {
-            margin-top: 80px;
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
             text-align: center;
-            color: var(--gray-text);
+            padding: 2rem;
+            background-color: #0a0a0a;
+            border-top: 1px solid #222;
+            color: var(--text-muted);
             font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Navigation -->
+    <!-- Navigation Header -->
+    <header>
+        <div class="brand-name">BEETLE <span>STATION</span></div>
         <nav>
-            <div class="logo-text">BEETLE <span>STATION</span></div>
-            <ul class="nav-links">
-                <li><a href="#about">เกี่ยวกับเรา</a></li>
-                <li><a href="#services">สินค้าและบริการ</a></li>
-                <li><a href="#portfolio">ผลงานและจุดเด่น</a></li>
-                <li><a href="#contact">ติดต่อ</a></li>
-            </ul>
+            <a href="#about">เกี่ยวกับแบรนด์</a>
+            <a href="#portfolio">พอร์ตโฟลิโอ</a>
+            <a href="#product">สินค้า</a>
+            <a href="#videos">วิดีโอ</a>
         </nav>
+    </header>
 
-        <!-- Hero Section / Brand Profile -->
-        <section class="hero" id="about">
-            <!-- รูปโปรไฟล์แบรนด์ BEETLE STVTION -->
-            <img src="https://drive.google.com/thumbnail?id=1Y_H0vyF5MgZ_nvGsHJa-UMq2P_bmoR5R&sz=w500" alt="BEETLE STVTION Profile" class="profile-img">
-            
-            <h1>BEETLE <span>STATION</span></h1>
-            <p class="tagline">& Jelly Dock</p>
-            <p class="tagline" style="color: var(--cream); font-style: italic;">"Raised & Crafted with Care"</p>
-            <p class="hero-desc">
-                ใส่ใจทุกการเลี้ยง พิถีพิถันทุกการสร้างสรรค์ — แหล่งรวมการจำหน่ายด้วงคุณภาพ และอุปกรณ์การเลี้ยงด้วงจากไม้ธรรมชาติที่ประดิษฐ์ด้วยมือ พร้อมให้คำแนะนำอย่างจริงใจจากประสบการณ์จริง
-            </p>
-            
-            <div class="btn-group">
-                <a href="#portfolio" class="btn btn-primary">ดูพอร์ตโฟลิโอ</a>
-                <a href="#contact" class="btn btn-secondary">ติดต่อเรา</a>
+    <!-- Hero / Profile Section -->
+    <section class="hero" id="about">
+        <div class="profile-img-container">
+            <!-- เปลี่ยน src เป็นพาธรูปโปรไฟล์แบรนด์ของคุณ -->
+            <img src="profile.jpg" alt="BEETLE STATION Profile">
+        </div>
+        <h1>BEETLE STATION</h1>
+        <p class="tagline">Raised & Crafted with Care</p>
+        <p class="bio">ใส่ใจทุกการเลี้ยงดู ใส่ใจทุกการสร้างสรรค์ — ศูนย์รวมด้วงคุณภาพและอุปกรณ์เลี้ยงด้วงจากไม้ธรรมชาติที่ออกแบบมาใช้งานได้จริง</p>
+    </section>
+
+    <!-- Brand Canvas / Portfolio Analysis Section -->
+    <section class="section" id="portfolio">
+        <h2 class="section-title">วิเคราะห์พอร์ตโฟลิโอแบรนด์ (Brand Canvas)</h2>
+        <div class="canvas-grid">
+            <div class="card">
+                <h3>วิสัยทัศน์ & เป้าหมาย</h3>
+                <p>แก้ไขปัญหาผู้เลี้ยงด้วงที่ต้องซื้ออุปกรณ์จากหลายแหล่งและขาดข้อมูลคำแนะนำที่ถูกต้อง มุ่งเน้นจัดหาด้วงคุณภาพและอุปกรณ์ไม้ธรรมชาติที่ใช้งานได้จริง[cite: 1, 2]</p>
             </div>
-        </section>
-
-        <!-- Brand Values Section -->
-        <section>
-            <h2 class="section-title">อัตลักษณ์ของแบรนด์</h2>
-            <div class="values-list">
-                <div class="value-tag">น่าเชื่อถือ</div>
-                <div class="value-tag">สร้างสรรค์</div>
-                <div class="value-tag">จริงใจ</div>
-                <div class="value-tag">พิถีพิถัน</div>
-                <div class="value-tag">เป็นธรรมชาติ</div>
-                <div class="value-tag">ทันสมัย</div>
+            <div class="card">
+                <h3>กลุ่มเป้าหมาย (Target)</h3>
+                <p>กลุ่มคนรักการเลี้ยงด้วง นักสะสม และผู้เริ่มต้น ตั้งแต่อายุ 15–45 ปี ที่มองหาอุปกรณ์สวยงาม มีคุณภาพ และคำแนะนำจากผู้เชี่ยวชาญ[cite: 1, 2]</p>
             </div>
-        </section>
-
-        <!-- Product & Services Section -->
-        <section id="services">
-            <h2 class="section-title">สินค้าและบริการของเรา</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <span class="badge">Quality Beetle</span>
-                    <h3>คัดสรรด้วงคุณภาพ</h3>
-                    <p>จำหน่ายด้วงสายพันธุ์คุณภาพผ่านกระบวนการดูแลและเพาะเลี้ยงด้วยตนเอง มั่นใจในความแข็งแรงและสมบูรณ์</p>
-                </div>
-                <div class="card">
-                    <span class="badge">Handcrafted</span>
-                    <h3>อุปกรณ์ไม้ธรรมชาติ (Jelly Dock)</h3>
-                    <p>ผลิตและประดิษฐ์อุปกรณ์เลี้ยงด้วงจากไม้ธรรมชาติด้วยมือ พิถีพิถัน ปลอดภัย สวยงามน่าสะสม</p>
-                </div>
-                <div class="card">
-                    <span class="badge">Consultation</span>
-                    <h3>คำแนะนำจากประสบการณ์จริง</h3>
-                    <p>ให้คำปรึกษาและข้อมูลเชิงลึกเกี่ยวกับการเลี้ยงด้วง ดูแลและติดตามผลหลังการขายอย่างจริงใจ</p>
-                </div>
+            <div class="card">
+                <h3>จุดเด่น & เอกลักษณ์</h3>
+                <p>ผสมผสานความรู้การเพาะเลี้ยงด้วยตนเอง เข้ากับการผลิตอุปกรณ์ไม้ด้วยมือ (Handcrafted) จริงใจและน่าเชื่อถือ[cite: 1, 2]</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Portfolio & Strategy Section -->
-        <section id="portfolio">
-            <h2 class="section-title">วิเคราะห์และผลงาน (Brand Canvas Portfolio)</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>🎯 แก้ปัญหาให้ผู้เลี้ยงด้วง (Target & Unmet Needs)</h3>
-                    <p>
-                        สำหรับกลุ่มผู้สนใจอายุ 15–45 ปี และนักสะสมที่เคยเจอปัญหาการซื้อด้วงและอุปกรณ์กระจัดกระจาย ขาดข้อมูลความรู้ที่ถูกต้อง BEETLE STVTION จึงถูกสร้างขึ้นเพื่อเป็นโซลูชันแบบครบวงจร
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>🛠️ กระบวนการสร้างสรรค์ (Craftsmanship)</h3>
-                    <p>
-                        โดดเด่นด้วยการผสมผสานระหว่างการเพาะเลี้ยงด้วยตนเอง และงานคราฟต์ไม้แบบชิ้นต่อชิ้น เพื่อสร้างอุปกรณ์การเลี้ยงที่เข้ากันได้อย่างลงตัวและปลอดภัยต่อสัตว์เลี้ยง
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>📦 การแพ็คและบรรจุภัณฑ์ (Standard Package)</h3>
-                    <p>
-                        บรรจุสินค้าอย่างปลอดภัย พร้อมฉลากแบรนด์ ข้อมูลสายพันธุ์ และคู่มือการใช้งาน/ดูแลรักษาอย่างเป็นระบบ เพื่อความมั่นใจของผู้รับ
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>📱 สื่อและการสร้างคอมมูนิตี้ (Content Creation)</h3>
-                    <p>
-                        สร้างการรับรู้ผ่าน TikTok, Facebook Reels และ YouTube Shorts นำเสนอเทคนิคการเพาะเลี้ยง งานไม้แฮนด์เมด และสร้างสังคมผู้เลี้ยงด้วงที่อบอุ่น
-                    </p>
-                </div>
+    <!-- Product Showcase Section -->
+    <section class="section" id="product">
+        <h2 class="section-title">สินค้าแนะนำ</h2>
+        <div class="product-card">
+            <div class="product-img">
+                <!-- เปลี่ยน src เป็นพาธรูปภาพสินค้าของคุณ -->
+                <img src="product.jpg" alt="อุปกรณ์ไม้ธรรมชาติสำหรับเลี้ยงด้วง">
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" style="text-align: center; margin-top: 60px;">
-            <h2 class="section-title">ช่องทางการติดต่อ</h2>
-            <div class="card" style="max-width: 600px; margin: 0 auto;">
-                <p style="margin-bottom: 15px;">สนใจสั่งซื้อด้วง อุปกรณ์ Jelly Dock หรือสอบถามข้อมูลการเลี้ยงเพิ่มเติม</p>
-                <p><strong>แบรนด์:</strong> BEETLE STATION & Jelly Dock</p>
-                <p style="color: var(--red-accent); font-weight: 600; margin-top: 10px;">ติดตามเราได้ที่โซเชียลมีเดีย (TikTok / Facebook / YouTube)</p>
+            <div class="product-details">
+                <div class="product-title">ขอนไม้ธรรมชาติสำหรับพื้นที่เลี้ยงด้วง</div>
+                <div class="product-price">120 บาท</div>
+                <ul class="product-specs">
+                    <li>📐 <strong>ขนาด:</strong> กว้าง 10 ซม. × ยาว 4 ซม.</li>
+                    <li>🪵 <strong>วัสดุ:</strong> ผลิตจากไม้ธรรมชาติ 100%</li>
+                    <li>✨ <strong>เอกลักษณ์:</strong> แต่ละชิ้นมีลวดลายและรูปทรงเฉพาะตัว</li>
+                    <li>🛡️ <strong>ความปลอดภัย:</strong> ไม่มีการเคลือบสีหรือสารเคมี ปลอดภัยต่อตัวด้วง</li>
+                    <li>🌿 <strong>การใช้งาน:</strong> ออกแบบพิเศษสำหรับวางในพื้นที่เลี้ยงด้วง</li>
+                </ul>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2026 BEETLE STATION & Jelly Dock. All Rights Reserved.</p>
-        </footer>
-    </div>
+    <!-- Video Showcase Section -->
+    <section class="section" id="videos">
+        <h2 class="section-title">วิดีโอ & คอนเทนต์แบรนด์</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <video controls src="video1.mp4"></video>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">การเพาะเลี้ยงด้วง</p>
+            </div>
+            <div class="video-card">
+                <video controls src="video2.mp4"></video>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">เบื้องหลังการผลิตอุปกรณ์ไม้</p>
+            </div>
+            <div class="video-card">
+                <video controls src="video3.mp4"></video>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">การจัดตู้เลี้ยงและการใช้งานจริง</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 BEETLE STATION & Jelly Dock. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
